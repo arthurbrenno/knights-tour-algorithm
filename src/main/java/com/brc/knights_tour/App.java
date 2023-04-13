@@ -5,12 +5,11 @@ import com.brc.knights_tour.resources.*;
 
 public class App {
     /*Controls */
-    private static final int BOARD_SIZE = 8; //You should not change this.
+    private static final int BOARD_SIZE = 8; //You should not change this. <= Just for readability.
     private static final int START_KNIGHT_ROW = 0;
     private static final int START_KNIGHT_COL = 0;
     private static final int NUMBER_OF_MOVEMENTS = 64;
-    private static final int NUMBER_OF_TOURS = 1;
-    private static final boolean CHECK_FOR_VISITED_PLACES = true;
+    private static final int NUMBER_OF_TOURS = 1; 
 
     /*Objects */
     private static final Scanner scanner = new Scanner(System.in);
@@ -74,7 +73,6 @@ public class App {
         }
     }
 
-    //TODO: Different implementation
     public static void moveTheKnight() {
         knight.moveCheckingVisitedPlaces(knightMovementType, chessBoard);
     }
