@@ -1,7 +1,6 @@
 package com.brc.knights_tour;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
 import com.brc.knights_tour.resources.*;
 
 public class App {
@@ -88,13 +87,10 @@ public class App {
         }
     }
 
+    //TODO: Different implementation
     public static void moveTheKnight() {
-        if (CHECK_FOR_VISITED_PLACES) {
-            knight.moveCheckingVisitedPlaces(knightMovementType, chessBoard);
-        }
-        else {
-            knight.move(knightMovementType, chessBoard);
-        }
+        knight.moveCheckingVisitedPlaces(knightMovementType, chessBoard);
     }
+
 
 }
