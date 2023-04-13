@@ -34,7 +34,7 @@ public class App {
                 displayMovements();
                 chessBoard.display();
                 showCommands();
-                knightMovementType = getMovementInput();
+                knightMovementType = Heuristic.findBestMove(knight, chessBoard);
                 moveTheKnight();
             }
         }
@@ -52,6 +52,8 @@ public class App {
 
     public static void prepareTour() {
         chessBoard.placePiece(knight, START_KNIGHT_ROW, START_KNIGHT_COL);
+        Heuristic.setCurrentAcessibilityRow(START_KNIGHT_ROW);
+        Heuristic.setCurrentAcessibilityCol(START_KNIGHT_COL);
     }
 
     public static void showCommands() {
@@ -62,21 +64,6 @@ public class App {
         System.out.printf("%s         %s%n", (knight.isPossibleMovement(4, chessBoard)) ? "4" : "", (knight.isPossibleMovement(7, chessBoard)) ? "7" : "");
         System.out.printf("  %s     %s  %n", knight.isPossibleMovement(5, chessBoard) ? "5" : "", (knight.isPossibleMovement(6, chessBoard)) ? "6" : "");
         System.out.println();
-    }
-
-    public static int getMovementInput() {
-        int input = -1;
-        
-        System.out.printf("Make Your Move>> ");
-        do {
-            try {
-                input = scanner.nextInt();
-            } catch (InputMismatchException e) {
-                scanner.nextLine();
-                continue;
-            }
-        } while (input < 0 || input > 7);
-        return input;
     }
 
     public static void clearConsole() {
@@ -91,6 +78,5 @@ public class App {
     public static void moveTheKnight() {
         knight.moveCheckingVisitedPlaces(knightMovementType, chessBoard);
     }
-
 
 }

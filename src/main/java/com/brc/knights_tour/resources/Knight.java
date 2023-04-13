@@ -48,7 +48,7 @@ public class Knight extends ChessPiece{
         String[][] board = chessBoard.getBoard();
         int newRow = currentRow + verticalMovements[movementType];
         int newCol = currentCol + horizontalMovements[movementType];
-        return (newRow >= 0 && newCol >=0 && newRow < board.length && newCol <board[newRow].length);
+        return (newRow >= 0 && newCol >=0 && newRow < board.length && newCol < board[newRow].length);
     }
 
     // ************************************************

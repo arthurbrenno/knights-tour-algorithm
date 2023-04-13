@@ -14,7 +14,9 @@ public class Heuristic {
 
     private static int currentAcessibilityRow;
     private static int currentAcessibilityCol;
-
+    private static final int[] horizontalMovements = {2, 1, -1, -2, -2, -1, 1, 2};
+    private static final int[] verticalMovements = {-1, -2, -2, -1, 1, 2, 2, 1};
+    private static int[] allPossibleMovements = new int[8];
 
 	// ************************************************
 	// 
@@ -47,12 +49,33 @@ public class Heuristic {
 	// Class methods
 	// 
 	// ************************************************
+    
+    public static int findBestMove(Knight knight, ChessBoard chessBoard) {
+        currentAcessibilityRow = knight.getCurrentRow();
+        currentAcessibilityCol = knight.getCurrentCol();
+        int bestMovement = -1;
+        int smallestNumber = 10;
+        int smallestNumberIndex;
+        
+        //Fill allPossibleMovement array
+        for (int movement = 0; movement < 8; movement++) {
+            if (knight.isPossibleMovement(movement, chessBoard)) {
+                if (!(chessBoard.wasVisited(currentAcessibilityRow + verticalMovements[movement], currentAcessibilityCol + horizontalMovements[movement]))) {
+                    allPossibleMovements[movement] = getAcessibilityAtPosition(currentAcessibilityRow + verticalMovements[movement], currentAcessibilityCol + horizontalMovements[movement]);
+                }
+            }
+        }
 
-    public static int findBestMove(int currentKnightRow) {
-        int move = -1;
+        //find the smallest number and index;
+        for (int i = 0; i < allPossibleMovements.length; i++) {
+            if (allPossibleMovements[i] < smallestNumber) {
+                smallestNumber = allPossibleMovements[i];
+                smallestNumberIndex = i;
+                bestMovement = smallestNumberIndex;
+            }
+        }
 
-
-        return move;
+        return bestMovement;
     }
 
 } 
