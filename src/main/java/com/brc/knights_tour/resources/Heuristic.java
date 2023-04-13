@@ -68,10 +68,11 @@ public class Heuristic {
 
         //find the smallest number and index;
         for (int i = 0; i < allPossibleMovements.length; i++) {
-            if (allPossibleMovements[i] < smallestNumber) {
+            if (allPossibleMovements[i] < smallestNumber && allPossibleMovements[i] != 0) {
                 smallestNumber = allPossibleMovements[i];
                 smallestNumberIndex = i;
                 bestMovement = smallestNumberIndex;
+                allPossibleMovements[i] = 0;
             }
         }
 
