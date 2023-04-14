@@ -12,7 +12,6 @@ public class App {
     private static final int NUMBER_OF_TOURS = 1; 
 
     /*Objects */
-    private static final Scanner scanner = new Scanner(System.in);
     private static ChessBoard chessBoard = new ChessBoard(BOARD_SIZE);
     private static Knight knight = new Knight(START_KNIGHT_ROW, START_KNIGHT_COL);
     
@@ -24,7 +23,6 @@ public class App {
 	// Main Aplication
 	// 
 	// ************************************************
-
     public static void main(String[] args) {
         prepareTour();
         for (int tour = 0; tour < NUMBER_OF_TOURS; tour++) {
